@@ -47,6 +47,10 @@ blockquote {
   
 }
 
+#margin {
+  margin-left: -px;
+}
+
 #author {
  display: flex;
  justify-content: right;

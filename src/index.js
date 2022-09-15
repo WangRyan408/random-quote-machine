@@ -1,11 +1,14 @@
 import React from 'react';
 import { createRoot }from 'react-dom/client';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
 const root = createRoot(document.getElementById('root'));
-
+library.add(faQuoteLeft);
 
 
 class QuoteGenerator extends React.Component {
@@ -81,9 +84,14 @@ class Quote extends React.Component {
 
         return (
             <div id="container">
-                <blockquote id="quote"><em>{currentQuote}</em></blockquote>
+                <blockquote id="quote">
+                  <FontAwesomeIcon icon="fa-solid fa-quote-left" />
+                  <em>{currentQuote}</em>
+                  </blockquote>
                 <cite id="author">- {currentAuthor}</cite>
-                <div id="button" ><button onClick={this.randomQuote}>New Quote</button></div>
+                <div id="button">
+                  
+                  <button onClick={this.randomQuote}>New Quote</button></div>
             </div>
             
         )
