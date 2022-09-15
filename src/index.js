@@ -2,13 +2,14 @@ import React from 'react';
 import { createRoot }from 'react-dom/client';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faQuoteLeft } from '@fortawesome/free-solid-svg-icons'
 import './index.css';
 
 import reportWebVitals from './reportWebVitals';
 
 const root = createRoot(document.getElementById('root'));
-library.add(faQuoteLeft);
+library.add(fab, faQuoteLeft);
 
 
 class QuoteGenerator extends React.Component {
@@ -84,14 +85,14 @@ class Quote extends React.Component {
 
         return (
             <div id="container">
-                <blockquote id="quote">
+                <blockquote id="quote-box">
                   <FontAwesomeIcon icon="fa-solid fa-quote-left" />
-                  <em>{currentQuote}</em>
+                  <em id='text'>{currentQuote}</em>
                   </blockquote>
                 <cite id="author">- {currentAuthor}</cite>
                 <div id="button">
-                  
-                  <button onClick={this.randomQuote}>New Quote</button></div>
+                  <a href={`https://twitter.com/intent/tweet`} target="_blank" id="tweet-quote" rel="noopener noreferrer"><FontAwesomeIcon icon="fa-brands fa-twitter"/></a>
+                  <button onClick={this.randomQuote} id="new-quote">New Quote</button></div>
             </div>
             
         )
