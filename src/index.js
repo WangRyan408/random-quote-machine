@@ -42,16 +42,42 @@ class QuoteGenerator extends React.Component {
 class Quote extends React.Component {
     constructor(props) {
         super(props);
+      
+        this.state = {
+          quotes: [{"quote": "Be yourself; everyone else is already taken.",
+          "author": "Oscar Wilde"},
+                 {"quote": "Be the change that you wish to see in the world.",
+          "author": "Mahatma Gandhi"},
+                 {"quote": "Live as if you were to die tomorrow. Learn as if you were to live forever.",
+          "author": "Mahatma Gandhi"},
+                 { "quote": "No one can make you feel inferior without your consent.",
+          "author": "Eleanor Roosevelt"},
+                 {"quote": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate; only love can do that.",
+          "author": "Martin Luther King"},
+                 {"quote": "Injustice anywhere is a threat to justice everywhere.",
+          "author": "Martin Luther King"},
+                 {"quote": "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
+          "author": "Albert Einstein"},
+                 ],
+          randomIndex: 0,
+        }
+        this.randomQuote = this.randomQuote.bind(this);
+        //this.handleQuote = this.handleQuote.bind(this);
 
     }
 
-    handleQuote() {
-        
+    randomQuote() {
+        this.setState({
+          quotes: this.state.quotes,
+          randomIndex: Math.floor(Math.random() * this.state.quotes.length)
+        })
     }
+
+   
 
     render() {
 
-        const quotes = [{"quote": "Be yourself; everyone else is already taken.",
+      /*  const quotes = [{"quote": "Be yourself; everyone else is already taken.",
         "author": "Oscar Wilde"},
                {"quote": "Be the change that you wish to see in the world.",
         "author": "Mahatma Gandhi"},
@@ -65,17 +91,17 @@ class Quote extends React.Component {
         "author": "Martin Luther King"},
                {"quote": "Imagination is more important than knowledge. Knowledge is limited. Imagination encircles the world.",
         "author": "Albert Einstein"},
-               ]
+               ] */
         
-        let RNG = Math.floor(Math.random() * quotes.length);
-        let currentQuote = quotes[RNG]["quote"];
-        let currentAuthor = quotes[RNG]["author"];
+        //let RNG = Math.floor(Math.random() * quotes.length);
+        let currentQuote = this.state.quotes[this.state.randomIndex]['quote'];
+        let currentAuthor = this.state.quotes[this.state.randomIndex]['author'];
 
         return (
             <div id="container">
                 <blockquote id="quote"><em>{currentQuote}</em></blockquote>
                 <cite id="author">- {currentAuthor}</cite>
-                <div id="button"><button>New Quote</button></div>
+                <div id="button" onClick={this.randomQuote}><button>New Quote</button></div>
             </div>
             
         )
